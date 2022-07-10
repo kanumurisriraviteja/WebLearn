@@ -4,13 +4,13 @@ using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
- 
+
     [Route("api/[controller]/[action]")]
     [ApiController]
     public class CarController : ControllerBase
     {
         List<Car> car = new List<Car>();
-       public CarController()
+        public CarController()
         {
             car.Add(new Car() { Model = 1, Type = "Tata", Color = "W" });
             car.Add(new Car() { Model = 2, Type = "Porsche", Color = "B" });
@@ -27,7 +27,7 @@ namespace WebAPI.Controllers
         [HttpGet]
         public Car GetSpecificCar(int id)
         {
-            return car.Find(x => x.Model == id);
+            return car.Find(x => x.Model == id) ?? new Car();
         }
 
         [HttpPost]
